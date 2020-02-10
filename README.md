@@ -1,3 +1,5 @@
+Login with your email and start chatting.
+
 # chattychat
 
 A new Flutter project.
