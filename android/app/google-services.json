@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "18581265943",
+    "firebase_url": "https://chattychat-5bf91.firebaseio.com",
+    "project_id": "chattychat-5bf91",
+    "storage_bucket": "chattychat-5bf91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18581265943:android:986a54249181b35ed60652",
+        "android_client_info": {
+          "package_name": "com.example.chattychat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18581265943-psv4672sh1gcov4sl9m4tlsapl6r8dtc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0irQOpvHJVtG8fItLe5lKaxBrN0BnqvQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18581265943-psv4672sh1gcov4sl9m4tlsapl6r8dtc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
