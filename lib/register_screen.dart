@@ -1,8 +1,10 @@
 import 'package:chattychat/asymmetric_button.dart';
 import 'package:chattychat/chatty_screen.dart';
 import 'package:chattychat/styles.dart';
+import 'package:chattychat/util.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String id = 'register_screen';
@@ -73,7 +75,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Navigator.pushNamed(context, ChattyScreen.id);
                   }
                 } catch (e) {
-                  print(e);
+                  if (e is PlatformException) {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => Util.showDialog(context, e.message),
+                    );
+                  }
                 }
               },
             ),

@@ -1,7 +1,9 @@
 import 'package:chattychat/styles.dart';
+import 'package:chattychat/util.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart';
 
 final firestore = Firestore.instance;
 FirebaseUser loggedInUser;
@@ -32,7 +34,12 @@ class _ChattyScreenState extends State<ChattyScreen> {
         loggedInUser = user;
       }
     } catch (e) {
-      print(e);
+      if (e is PlatformException) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) => Util.showDialog(context, e.message),
+        );
+      }
     }
   }
 

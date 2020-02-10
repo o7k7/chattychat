@@ -1,6 +1,8 @@
 import 'package:chattychat/asymmetric_button.dart';
+import 'package:chattychat/util.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 
 import 'chatty_screen.dart';
 import 'styles.dart';
@@ -74,7 +76,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.pushNamed(context, ChattyScreen.id);
                   }
                 } catch (e) {
-                  print(e);
+                  if (e is PlatformException) {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => Util.showDialog(context, e.message),
+                    );
+                  }
                 }
               },
             ),
