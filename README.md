@@ -1,6 +1,6 @@
 Login with your email and start chatting.
 
-![Chatty Screen](https://i.ibb.co/zPMNyvR/Simulator-Screen-Shot-i-Phone-11-Pro-Max-2020-02-10-at-14-15-58.png)
+![Chatty Screen](https://i.ibb.co/0Y7QgbM/Simulator-Screen-Shot-i-Phone-11-Pro-Max-2020-02-10-at-14-15-58.png)
 
 # chattychat
 
