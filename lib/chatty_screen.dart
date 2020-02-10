@@ -1,3 +1,4 @@
+import 'package:bubble/bubble.dart';
 import 'package:chattychat/styles.dart';
 import 'package:chattychat/util.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,8 @@ class _ChattyScreenState extends State<ChattyScreen> {
       if (e is PlatformException) {
         showDialog(
           context: context,
-          builder: (BuildContext context) => Util.showDialog(context, e.message),
+          builder: (BuildContext context) =>
+              Util.showDialog(context, e.message),
         );
       }
     }
@@ -82,10 +84,12 @@ class _ChattyScreenState extends State<ChattyScreen> {
                   FlatButton(
                     onPressed: () {
                       mTextController.clear();
-                      firestore.collection('messages').add({
-                        'text': mText,
-                        'sender': loggedInUser.email,
-                      });
+                      if (mText != null && mText.isNotEmpty) {
+                        firestore.collection('messages').add({
+                          'text': mText,
+                          'sender': loggedInUser.email,
+                        });
+                      }
                     },
                     child: Text(
                       'Send',
@@ -155,31 +159,23 @@ class MessageBubble extends StatelessWidget {
             isWriter ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
           Material(
-            borderRadius: isWriter
-                ? BorderRadius.only(
-                    topLeft: Radius.circular(30.0),
-                    topRight: Radius.circular(30.0),
-                    bottomLeft: Radius.circular(30.0),)
-                : BorderRadius.only(
-                    bottomRight: Radius.circular(30.0),
-                    topRight: Radius.circular(30.0),
-                    topLeft: Radius.circular(30.0),
-                  ),
-            elevation: 5.0,
-            color: isWriter ? Colors.blue : Colors.white,
+            elevation: 0.0,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-              child: Text(
-                text,
-                style: TextStyle(
-                  color: isWriter ? Colors.white : Colors.black54,
-                  fontSize: 15.0,
-                ),
-              ),
+              child: isWriter
+                  ? Bubble(
+                      margin: BubbleEdges.only(top: 10),
+                      nip: BubbleNip.rightBottom,
+                      color: Color.fromRGBO(225, 255, 199, 1.0),
+                      child: Text(text, textAlign: TextAlign.right),
+                    )
+                  : Bubble(
+                      margin: BubbleEdges.only(top: 10),
+                      nip: BubbleNip.leftBottom,
+                      color: Color.fromRGBO(225, 255, 199, 1.0),
+                      child: Text(text, textAlign: TextAlign.right),
+                    ),
             ),
-          ),
-          SizedBox (
-            height: 12.0,
           ),
           Text(
             sender,

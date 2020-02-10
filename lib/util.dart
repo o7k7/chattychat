@@ -17,7 +17,7 @@ class Util {
             Navigator.of(context).pop();
           },
           textColor: Theme.of(context).primaryColor,
-          child: const Text('Ok'),
+          child: const Text('OK'),
         ),
       ],
     );
