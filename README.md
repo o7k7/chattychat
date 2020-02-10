@@ -1,5 +1,7 @@
 Login with your email and start chatting.
 
+![Chatty Screen](https://ibb.co/zPMNyvR)
+
 # chattychat
 
 A new Flutter project.
