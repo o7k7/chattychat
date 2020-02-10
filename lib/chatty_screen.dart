@@ -102,8 +102,7 @@ class MessagesStream extends StatelessWidget {
       stream: firestore.collection('messages').snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return Center(
-          );
+          return Center();
         }
         final messages = snapshot.data.documents.reversed;
         List<MessageBubble> messageBubbles = [];
@@ -148,23 +147,16 @@ class MessageBubble extends StatelessWidget {
         crossAxisAlignment:
             isWriter ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            sender,
-            style: TextStyle(
-              fontSize: 12.0,
-              color: Colors.black54,
-            ),
-          ),
           Material(
             borderRadius: isWriter
                 ? BorderRadius.only(
                     topLeft: Radius.circular(30.0),
-                    bottomLeft: Radius.circular(30.0),
-                    bottomRight: Radius.circular(30.0))
+                    topRight: Radius.circular(30.0),
+                    bottomLeft: Radius.circular(30.0),)
                 : BorderRadius.only(
-                    bottomLeft: Radius.circular(30.0),
                     bottomRight: Radius.circular(30.0),
                     topRight: Radius.circular(30.0),
+                    topLeft: Radius.circular(30.0),
                   ),
             elevation: 5.0,
             color: isWriter ? Colors.blue : Colors.white,
@@ -177,6 +169,16 @@ class MessageBubble extends StatelessWidget {
                   fontSize: 15.0,
                 ),
               ),
+            ),
+          ),
+          SizedBox (
+            height: 12.0,
+          ),
+          Text(
+            sender,
+            style: TextStyle(
+              fontSize: 12.0,
+              color: Colors.black54,
             ),
           ),
         ],
